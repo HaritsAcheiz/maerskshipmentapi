@@ -130,5 +130,5 @@ if __name__ == '__main__':
 	# response = api.find_origin_by_zip('30044')
 	# response = api.service_info(sOriginZip='90001', sDestZip='30044')
 	response = api.get_new_quote_rest()
-
-	print(response.text)
+	quote_object = response.text
+	print(quote_object)

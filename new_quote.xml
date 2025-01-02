@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dsTQSQuote xmlns="http://www.pilotair.com/">
+  <xs:schema id="dsTQSQuote" targetNamespace="http://tempuri.org/dsTQSQuote.xsd" xmlns:mstns="http://tempuri.org/dsTQSQuote.xsd" xmlns="http://tempuri.org/dsTQSQuote.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="dsTQSQuote" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="TQSQuote">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="QuoteID" type="xs:int" minOccurs="0" />
+                <xs:element name="TariffID" type="xs:int" minOccurs="0" />
+                <xs:element name="Scale" type="xs:string" minOccurs="0" />
+                <xs:element name="LocationID" type="xs:int" />
+                <xs:element name="TransportByAir" type="xs:boolean" minOccurs="0" />
+                <xs:element name="CalculateBillCode" type="xs:boolean" minOccurs="0" />
+                <xs:element name="IsSaveQuote" type="xs:boolean" default="true" minOccurs="0" />
+                <xs:element name="IATA_Classifications" type="xs:int" minOccurs="0" />
+                <xs:element name="PackingContainers" type="xs:int" minOccurs="0" />
+                <xs:element name="DeclaredValue" type="xs:double" minOccurs="0" />
+                <xs:element name="InsuranceValue" type="xs:double" minOccurs="0" />
+                <xs:element name="COD" type="xs:double" minOccurs="0" />
+                <xs:element name="TariffName" type="xs:string" />
+                <xs:element name="Notes" type="xs:string" minOccurs="0" />
+                <xs:element name="Service" type="xs:string" minOccurs="0" />
+                <xs:element name="QuoteDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="ChargeWeight" type="xs:int" minOccurs="0" />
+                <xs:element name="TotalPieces" type="xs:int" minOccurs="0" />
+                <xs:element name="ShipDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TariffHeaderID" type="xs:int" minOccurs="0" />
+                <xs:element name="UserID" type="xs:int" minOccurs="0" />
+                <xs:element name="QuoteConfirmationEmail" type="xs:string" minOccurs="0" />
+                <xs:element name="DebrisRemoval" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Gateway" type="xs:string" default="" minOccurs="0" />
+                <xs:element name="IsInternational" type="xs:boolean" default="false" minOccurs="0" />
+                <xs:element name="IsDebug" type="xs:string" default="False" minOccurs="0" />
+                <xs:element name="Shipper" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Name" type="xs:string" minOccurs="0" />
+                      <xs:element name="PDArea" type="xs:string" minOccurs="0" />
+                      <xs:element name="Address1" type="xs:string" minOccurs="0" />
+                      <xs:element name="Address2" type="xs:string" minOccurs="0" />
+                      <xs:element name="City" type="xs:string" minOccurs="0" />
+                      <xs:element name="State" type="xs:string" minOccurs="0" />
+                      <xs:element name="Zipcode" type="xs:string" minOccurs="0" />
+                      <xs:element name="Airport" type="xs:string" minOccurs="0" />
+                      <xs:element name="Attempted" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="PrivateRes" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Hotel" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Inside" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Liftgate" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="TwoManHours" type="xs:double" minOccurs="0" />
+                      <xs:element name="WaitTimeHours" type="xs:double" minOccurs="0" />
+                      <xs:element name="Special" type="xs:string" minOccurs="0" />
+                      <xs:element name="DedicatedVehicle" type="xs:string" minOccurs="0" />
+                      <xs:element name="Miles" type="xs:int" minOccurs="0" />
+                      <xs:element name="Canadian" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ServiceCode" type="xs:string" minOccurs="0" />
+                      <xs:element name="Convention" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Country" type="xs:string" minOccurs="0" />
+                      <xs:element name="IsBeyond" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="BeyondServiceArea" type="xs:string" minOccurs="0" />
+                      <xs:element name="Station" type="xs:string" minOccurs="0" />
+                      <xs:element name="AirtrakNo" type="xs:int" default="0" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Consignee" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Name" type="xs:string" minOccurs="0" />
+                      <xs:element name="PDArea" type="xs:string" minOccurs="0" />
+                      <xs:element name="Address1" type="xs:string" minOccurs="0" />
+                      <xs:element name="Address2" type="xs:string" minOccurs="0" />
+                      <xs:element name="City" type="xs:string" minOccurs="0" />
+                      <xs:element name="State" type="xs:string" minOccurs="0" />
+                      <xs:element name="Zipcode" type="xs:string" minOccurs="0" />
+                      <xs:element name="Airport" type="xs:string" minOccurs="0" />
+                      <xs:element name="Attempted" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="PrivateRes" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Hotel" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Inside" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Liftgate" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="TwoManHours" type="xs:double" minOccurs="0" />
+                      <xs:element name="WaitTimeHours" type="xs:double" minOccurs="0" />
+                      <xs:element name="Special" type="xs:string" minOccurs="0" />
+                      <xs:element name="DedicatedVehicle" type="xs:string" minOccurs="0" />
+                      <xs:element name="Miles" type="xs:int" minOccurs="0" />
+                      <xs:element name="Canadian" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ServiceCode" type="xs:string" minOccurs="0" />
+                      <xs:element name="Convention" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="Country" type="xs:string" minOccurs="0" />
+                      <xs:element name="IsBeyond" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="BeyondServiceArea" type="xs:string" minOccurs="0" />
+                      <xs:element name="Station" type="xs:string" minOccurs="0" />
+                      <xs:element name="AirtrakNo" type="xs:int" default="0" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="LineItems" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="LineRow" type="xs:int" minOccurs="0" />
+                      <xs:element name="Pieces" type="xs:int" minOccurs="0" />
+                      <xs:element name="Weight" type="xs:int" minOccurs="0" />
+                      <xs:element name="Description" type="xs:string" minOccurs="0" />
+                      <xs:element name="Length" type="xs:int" minOccurs="0" />
+                      <xs:element name="Width" type="xs:int" minOccurs="0" />
+                      <xs:element name="Height" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Quote" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Service" type="xs:string" />
+                      <xs:element name="DimWeight" type="xs:int" minOccurs="0" />
+                      <xs:element name="TotalQuote" type="xs:double" minOccurs="0" />
+                      <xs:element name="Oversized" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="OversizedServiceArea" type="xs:string" minOccurs="0" />
+                      <xs:element name="AbleToCalculate" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ChargeWeight" type="xs:int" minOccurs="0" />
+                      <xs:element name="Beyond" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="DisplayService" type="xs:string" minOccurs="0" />
+                      <xs:element name="TopLine" type="xs:double" minOccurs="0" />
+                      <xs:element name="UpgradeRequiredForServiceArea" type="xs:boolean" default="false" minOccurs="0" />
+                      <xs:element name="LinkForShipping" type="xs:string" minOccurs="0" />
+                      <xs:element name="DeliveryDate" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ExtendedTopLine" type="xs:double" minOccurs="0" />
+                      <xs:element name="ActualWeight" type="xs:int" default="0" minOccurs="0" />
+                      <xs:element name="ToplineOversize" type="xs:double" default="0" minOccurs="0" />
+                      <xs:element name="Breakdown" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="ChargeCode" type="xs:int" minOccurs="0" />
+                            <xs:element name="Charge" type="xs:double" minOccurs="0" />
+                            <xs:element name="BillCodeName" type="xs:string" />
+                            <xs:element name="Steps" type="xs:string" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+    <dsTQSQuote xmlns="http://tempuri.org/dsTQSQuote.xsd">
+      <TQSQuote diffgr:id="TQSQuote1" msdata:rowOrder="0" diffgr:hasChanges="inserted" msdata:hiddenTQSQuote_Id="0">
+        <QuoteID>0</QuoteID>
+        <TariffID>0</TariffID>
+        <Scale />
+        <LocationID>0</LocationID>
+        <TransportByAir>false</TransportByAir>
+        <CalculateBillCode>true</CalculateBillCode>
+        <IsSaveQuote>true</IsSaveQuote>
+        <IATA_Classifications>0</IATA_Classifications>
+        <PackingContainers>0</PackingContainers>
+        <DeclaredValue>0</DeclaredValue>
+        <InsuranceValue>0</InsuranceValue>
+        <COD>0</COD>
+        <TariffName />
+        <Notes />
+        <Service />
+        <QuoteDate>2025-01-01T15:46:36.9811662-05:00</QuoteDate>
+        <ChargeWeight>0</ChargeWeight>
+        <TotalPieces>0</TotalPieces>
+        <ShipDate>2025-01-01T15:46:36.9811662-05:00</ShipDate>
+        <TariffHeaderID>0</TariffHeaderID>
+        <QuoteConfirmationEmail />
+        <DebrisRemoval>false</DebrisRemoval>
+        <Gateway>0</Gateway>
+        <IsInternational>false</IsInternational>
+        <IsDebug>False</IsDebug>
+        <Shipper diffgr:id="Shipper1" msdata:rowOrder="0" diffgr:hasChanges="inserted" msdata:hiddenTQSQuote_Id="0">
+          <Name />
+          <PDArea />
+          <Address1 />
+          <Address2 />
+          <City />
+          <State />
+          <Zipcode />
+          <Airport />
+          <Attempted>false</Attempted>
+          <PrivateRes>false</PrivateRes>
+          <Hotel>false</Hotel>
+          <Inside>false</Inside>
+          <Liftgate>false</Liftgate>
+          <TwoManHours>0</TwoManHours>
+          <WaitTimeHours>0</WaitTimeHours>
+          <Special>Not a Special</Special>
+          <DedicatedVehicle>None</DedicatedVehicle>
+          <Miles>0</Miles>
+          <Canadian>false</Canadian>
+          <ServiceCode />
+          <Convention>false</Convention>
+          <Country />
+          <IsBeyond>false</IsBeyond>
+          <BeyondServiceArea />
+          <Station />
+          <AirtrakNo>0</AirtrakNo>
+        </Shipper>
+        <Consignee diffgr:id="Consignee1" msdata:rowOrder="0" diffgr:hasChanges="inserted" msdata:hiddenTQSQuote_Id="0">
+          <Name />
+          <PDArea />
+          <Address1 />
+          <Address2 />
+          <City />
+          <State />
+          <Zipcode />
+          <Airport />
+          <Attempted>false</Attempted>
+          <PrivateRes>false</PrivateRes>
+          <Hotel>false</Hotel>
+          <Inside>false</Inside>
+          <Liftgate>false</Liftgate>
+          <TwoManHours>0</TwoManHours>
+          <WaitTimeHours>0</WaitTimeHours>
+          <Special>Not a Special</Special>
+          <DedicatedVehicle>None</DedicatedVehicle>
+          <Miles>0</Miles>
+          <Canadian>false</Canadian>
+          <ServiceCode />
+          <Convention>false</Convention>
+          <Country />
+          <IsBeyond>false</IsBeyond>
+          <BeyondServiceArea />
+          <Station />
+          <AirtrakNo>0</AirtrakNo>
+        </Consignee>
+      </TQSQuote>
+    </dsTQSQuote>
+  </diffgr:diffgram>
+</dsTQSQuote>
