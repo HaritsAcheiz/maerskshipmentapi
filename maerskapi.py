@@ -124,6 +124,29 @@ class MaerskApi():
 		except Exception as e:
 			print("Error:", e)
 
+	def get_rating_rest(self, ratingRootObject):
+		endpoint = 'https://www.pilotssl.com/pilotapi/v1/Ratings'
+
+		payload = ratingRootObject
+		# encoded_payload = urlencode(payload)
+		# content_length = str(len(encoded_payload))
+
+		headers = {
+			'Content-Type': 'application/json',
+			'Accept': 'text/plain',
+			'api-key': '9AC336ED-722D-440E-9439-43AFEA65D884'
+		}
+
+		try:
+			with requests.Session() as client:
+				client.headers.update(headers)
+				response = client.post(endpoint, verify=False, json=payload)
+			response.raise_for_status()
+			return response.json()
+		except Exception as e:
+			print(f"Error occurred: {e}")
+			return None
+
 
 if __name__ == '__main__':
 	api = MaerskApi()

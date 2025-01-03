@@ -18,25 +18,27 @@ def quote_to_json(source_xml):
 	consignee = tqs_quote.find('.//temp:Consignee', ns)
 
 	result = {'Rating': dict()}
-	result['Rating']['TQSQuoteID'] = tqs_quote.find('temp:TQSQuoteID', ns).text
-	result['Rating']['QuoteID'] = tqs_quote.find('temp:QuoteID', ns).text
-	result['Rating']['TariffID'] = tqs_quote.find('temp:TariffID', ns).text
-	result['Rating']['Scale'] = tqs_quote.find('temp:Scale', ns).text
-	result['Rating']['LocationID'] = tqs_quote.find('temp:LocationID', ns).text
-	result['Rating']['TransportByAir'] = tqs_quote.find('temp:TransportByAir', ns).text
-	result['Rating']['CalculateBillCode'] = tqs_quote.find('temp:CalculateBillCode', ns).text
-	result['Rating']['IsSaveQuote'] = tqs_quote.find('temp:IsSaveQuote', ns).text
-	result['Rating']['IATA_Classifications'] = tqs_quote.find('temp:IATA_Classifications', ns).text
-	result['Rating']['PackingContainers'] = tqs_quote.find('temp:PackingContainers', ns).text
-	result['Rating']['DeclaredValue'] = tqs_quote.find('temp:DeclaredValue', ns).text
-	result['Rating']['InsuranceValue'] = tqs_quote.find('temp:InsuranceValue', ns).text
-	result['Rating']['COD'] = tqs_quote.find('temp:COD', ns).text
-	result['Rating']['TariffName'] = tqs_quote.find('temp:TariffName', ns).text
-	result['Rating']['Notes'] = tqs_quote.find('temp:Notes', ns).text
-	result['Rating']['Service'] = tqs_quote.find('temp:Service', ns).text
-	result['Rating']['QuoteDate'] = tqs_quote.find('temp:QuoteDate', ns).text
-	result['Rating']['ChargeWeight'] = tqs_quote.find('temp:ChargeWeight', ns).text
-	result['Rating']['TotalPieces'] = tqs_quote.find('temp:TotalPieces', ns).text
+	result['Rating']['TQSQuoteID'] = tqs_quote.find('temp:TQSQuoteID', ns).text if tqs_quote.find('temp:TQSQuoteID', ns) is not None else ""
+	result['Rating']['QuoteID'] = tqs_quote.find('temp:QuoteID', ns).text if tqs_quote.find('temp:QuoteID', ns) is not None else ""
+	result['Rating']['TariffID'] = tqs_quote.find('temp:TariffID', ns).text if tqs_quote.find('temp:TariffID', ns) is not None else ""
+	result['Rating']['Scale'] = tqs_quote.find('temp:Scale', ns).text if tqs_quote.find('temp:Scale', ns) is not None else ""
+	result['Rating']['LocationID'] = tqs_quote.find('temp:LocationID', ns).text if tqs_quote.find('temp:LocationID', ns) is not None else ""
+	result['Rating']['TransportByAir'] = tqs_quote.find('temp:TransportByAir', ns).text if tqs_quote.find('temp:TransportByAir', ns) is not None else ""
+	result['Rating']['CalculateBillCode'] = tqs_quote.find('temp:CalculateBillCode', ns).text if tqs_quote.find('temp:CalculateBillCode', ns) is not None else ""
+	result['Rating']['IsSaveQuote'] = tqs_quote.find('temp:IsSaveQuote', ns).text if tqs_quote.find('temp:IsSaveQuote', ns) is not None else ""
+	result['Rating']['IATA_Classifications'] = tqs_quote.find('temp:IATA_Classifications', ns).text if tqs_quote.find('temp:IATA_Classifications', ns) is not None else ""
+	result['Rating']['PackingContainers'] = tqs_quote.find('temp:PackingContainers', ns).text if tqs_quote.find('temp:PackingContainers', ns) is not None else ""
+	result['Rating']['DeclaredValue'] = tqs_quote.find('temp:DeclaredValue', ns).text if tqs_quote.find('temp:DeclaredValue', ns) is not None else ""
+	result['Rating']['InsuranceValue'] = tqs_quote.find('temp:InsuranceValue', ns).text if tqs_quote.find('temp:InsuranceValue', ns) is not None else ""
+	result['Rating']['COD'] = tqs_quote.find('temp:COD', ns).text if tqs_quote.find('temp:COD', ns) is not None else ""
+	result['Rating']['TariffName'] = tqs_quote.find('temp:TariffName', ns).text if tqs_quote.find('temp:TariffName', ns) is not None else ""
+	result['Rating']['Notes'] = tqs_quote.find('temp:Notes', ns).text if tqs_quote.find('temp:Notes', ns) is not None else ""
+	result['Rating']['Service'] = tqs_quote.find('temp:Service', ns).text if tqs_quote.find('temp:Service', ns) is not None else ""
+	result['Rating']['QuoteDate'] = tqs_quote.find('temp:QuoteDate', ns).text if tqs_quote.find('temp:QuoteDate', ns) is not None else ""
+	result['Rating']['ChargeWeight'] = tqs_quote.find('temp:ChargeWeight', ns).text if tqs_quote.find('temp:ChargeWeight', ns) is not None else ""
+	result['Rating']['TotalPieces'] = tqs_quote.find('temp:TotalPieces', ns).text if tqs_quote.find('temp:TotalPieces', ns) is not None else ""
+	result['Rating']['Shipper'] = dict()
+	result['Rating']['Consignee'] = dict()
 
 	for field in [
 		'Name', 'PDArea', 'Address1', 'Address2', 'City', 'State', 'Zipcode',
@@ -46,7 +48,7 @@ def quote_to_json(source_xml):
 		'BeyondServiceArea', 'Station', 'AirtrakNo'
 	]:
 		value = shipper.find(f'temp:{field}', ns)
-		result['Rating']['Shipper'][field] = value.text
+		result['Rating']['Shipper'][field] = value.text if value is not None else ""
 
 	for field in [
 		'Name', 'PDArea', 'Address1', 'Address2', 'City', 'State', 'Zipcode',
@@ -55,8 +57,8 @@ def quote_to_json(source_xml):
 		'Canadian', 'ServiceCode', 'Convention', 'Country', 'IsBeyond',
 		'BeyondServiceArea', 'Station', 'AirtrakNo'
 	]:
-	value = consignee.find(f'temp:{field}', ns)
-	result['Rating']['Consignee'][field] = value.text
+		value = consignee.find(f'temp:{field}', ns)
+		result['Rating']['Consignee'][field] = value.text if value is not None else ""
 
 	# line_items = ET.SubElement(rating, 'LineItems')
 	# for field in ['LineRow', 'Pieces', 'Weight', 'Description', 'Length', 'Width', 'Height']:
@@ -89,12 +91,12 @@ def quote_to_json(source_xml):
 	# ship_date = ET.SubElement(rating, 'ShipDate')
 	# ship_date.text = '1970-01-01T00:00:00.001Z'
 
-	result['Rating']['TariffHeaderID'] = tqs_quote.find('temp:TariffHeaderID', ns).text
-	result['Rating']['UserID', 'string')
-	result['Rating']['QuoteConfirmationEmail'] = tqs_quote.find('temp:QuoteConfirmationEmail', ns).text
-	result['Rating']['DebrisRemoval'] = tqs_quote.find('temp:DebrisRemoval', ns).text
-	result['Rating']['Gateway'] = tqs_quote.find('temp:Gateway', ns).text
-	result['Rating']['IsInternational'] = tqs_quote.find('temp:IsInternational', ns).text
+	result['Rating']['TariffHeaderID'] = tqs_quote.find('temp:TariffHeaderID', ns).text if tqs_quote.find('temp:TariffHeaderID', ns) is not None else ""
+	result['Rating']['UserID'] = tqs_quote.find('temp:UserID', ns).text if tqs_quote.find('temp:UserID', ns) is not None else ""
+	result['Rating']['QuoteConfirmationEmail'] = tqs_quote.find('temp:QuoteConfirmationEmail', ns).text if tqs_quote.find('temp:QuoteConfirmationEmail', ns) is not None else ""
+	result['Rating']['DebrisRemoval'] = tqs_quote.find('temp:DebrisRemoval', ns).text if tqs_quote.find('temp:DebrisRemoval', ns) is not None else ""
+	result['Rating']['Gateway'] = tqs_quote.find('temp:Gateway', ns).text if tqs_quote.find('temp:Gateway', ns) is not None else ""
+	result['Rating']['IsInternational'] = tqs_quote.find('temp:IsInternational', ns).text if tqs_quote.find('temp:IsInternational', ns) is not None else ""
 
 	return result
 
@@ -168,6 +170,10 @@ def shopify_maersk_rate_all_services(maersk_new_qoute, shopify_input):
 	if shipper_country is not None:
 		shipper_country.text = shopify_input['rate']['origin']['country']
 
+	shipper_canadian = root.find('.//default:Shipper/default:Canadian', namespaces)
+	if shipper_canadian is not None:
+		shipper_canadian.text = 'false'
+
 	# Consignee
 	consignee_name = root.find('.//default:Consignee/default:Name', namespaces)
 	if consignee_name is not None:
@@ -200,7 +206,12 @@ def shopify_maersk_rate_all_services(maersk_new_qoute, shopify_input):
 	if consignee_country is not None:
 		consignee_country.text = shopify_input['rate']['destination']['country']
 
-	modified_xml = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='utf-8')
-	modified_xml = convert_xml(modified_xml)
+	consignee_canadian = root.find('.//default:Consignee/default:Canadian', namespaces)
+	if consignee_canadian is not None:
+		consignee_canadian.text = 'false'
 
-	return modified_xml
+	modified_xml = etree.tostring(root, pretty_print=True, xml_declaration=True, encoding='utf-8')
+	result = quote_to_json(modified_xml)
+	# modified_xml = convert_xml(modified_xml)
+
+	return result

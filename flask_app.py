@@ -68,9 +68,10 @@ def calculate_rates():
 	}
 
 	maersk_new_quote = mapi.get_new_quote_rest()
-	result = shopify_maersk_rate_all_services(maersk_new_quote.text, shopify_input)
+	ratingRootObject = shopify_maersk_rate_all_services(maersk_new_quote.text, shopify_input)
+	result = mapi.get_rating_rest(ratingRootObject)
 
-	return Response(result, mimetype='application/xml')
+	return result
 
 # get order
 # response = mapi.get_new_quote_rest()
