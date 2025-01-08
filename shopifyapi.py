@@ -109,6 +109,45 @@ class ShopifyApi():
 
 		return response
 
+	def create_webhook(self, topic, callbackUrl, _format=None, _filter=None):
+		print('Creating Webhook...')
+		query = """
+			mutation webhookSubscriptionCreate($topic: WebhookSubscriptionTopic!, $webhookSubscription: WebhookSubscriptionInput!) {
+				webhookSubscriptionCreate(topic: $topic, webhookSubscription: $webhookSubscription) {
+					webhookSubscription {
+						id
+						topic
+						filter
+						format
+						endpoint {
+							__typename
+							... on WebhookHttpEndpoint {
+								callbackUrl
+							}
+						}
+					}
+					userErrors {
+						field
+						message
+					}
+				}
+			}
+		"""
+
+		variables = {
+			"topic": topic,
+			"webhookSubscription": {
+				"callbackUrl": callbackUrl,  # "https://example.org/endpoint"
+				"format": _format,  # "JSON"
+			}
+		}
+
+		# "filter": _filter  # "type:lookbook"
+
+		response = self.send_request(query, variables=variables)
+
+		return response
+
 	# Read
 	def products(self):
 		print("Fetching Products...")
@@ -132,6 +171,38 @@ class ShopifyApi():
 
 		return response
 
+	def get_webhooks(self):
+		print("Fetching Webhooks...")
+		query = '''
+			query {
+				webhookSubscriptions(first: 2) {
+					edges {
+						node {
+							id
+							topic
+							endpoint {
+								__typename
+								... on WebhookHttpEndpoint {
+									callbackUrl
+								}
+								... on WebhookEventBridgeEndpoint {
+									arn
+								}
+								... on WebhookPubSubEndpoint {
+									pubSubProject
+									pubSubTopic
+								}
+							}
+						}
+					}
+				}
+			}
+		'''
+
+		response = self.send_request(query)
+
+		return response
+
 	# Update
 
 	# Delete
@@ -141,10 +212,13 @@ if __name__ == '__main__':
 	api = ShopifyApi(store_name=os.getenv('STORE_NAME'), access_token=os.getenv('ACCESS_TOKEN'), version='2024-10')
 	api.create_session()
 	# response = api.products()
-	response = api.create_carrier_service(
-		name='Maersk',
-		callbackUrl='https://gasscooters.pythonanywhere.com/rates',
-		discovery=True,
-		active=True
-	)
+	# response = api.create_carrier_service(
+	# 	name='Maersk',
+	# 	callbackUrl='https://gasscooters.pythonanywhere.com/rates',
+	# 	discovery=True,
+	# 	active=True
+	# )
+	response = api.get_webhooks()
+	# response = api.create_webhook(topic='CARTS_CREATE', callbackUrl='https://0a98-120-188-37-151.ngrok-free.app/webhook', _format='JSON')
+
 	print(response)

@@ -2,8 +2,25 @@ from lxml import etree
 import xml.etree.ElementTree as ET
 import os
 from dotenv import load_dotenv
+import hmac
+import hashlib
+import base64
 
 load_dotenv()
+
+
+def verify_webhook(data, hmac_header):
+	calculated_hmac = hmac.new(
+		os.getenv('SHOPIFY_SECRET').encode('utf-8'),
+		data,
+		hashlib.sha256
+	).digest()
+
+	computed_hmac_base64 = base64.b64encode(calculated_hmac).decode('utf-8')
+	print("HMAC Header from Shopify:", hmac_header)
+	print("Computed HMAC Base64:", computed_hmac_base64)
+
+	return hmac.compare_digest(computed_hmac_base64, hmac_header)
 
 
 def quote_to_json(source_xml):
